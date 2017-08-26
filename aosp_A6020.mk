@@ -12,25 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-LOCAL_PATH := $(call my-dir)
+$(call inherit-product, device/lenovo/A6020/full_A6020.mk)
 
-# RIL
+$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base.mk)
 
-include $(CLEAR_VARS)
+# Boot animation
+TARGET_SCREEN_WIDTH := 1080
+TARGET_SCREEN_HEIGHT := 1920
 
-LOCAL_SRC_FILES := lenovo_ril.c
-LOCAL_SHARED_LIBRARIES := libbinder
-LOCAL_MODULE := libshim_ril
-LOCAL_MODULE_TAGS := optional
-
-include $(BUILD_SHARED_LIBRARY)
-
-#include $(CLEAR_VARS)
-
-#LOCAL_SRC_FILES := lenovo_gui.c
-#LOCAL_SHARED_LIBRARIES := liblog libcutils libgui libbinder libutils
-#LOCAL_MODULE := libshim_gui
-#LOCAL_LDLIBS := -llog -landroid -lGLESv3 -lEGL
-#LOCAL_MODULE_TAGS := optional
-
-#include $(BUILD_SHARED_LIBRARY)
+## Device identifier. This must come after all inclusions
+PRODUCT_DEVICE := A6020
+PRODUCT_NAME := aosp_A6020
+PRODUCT_MANUFACTURER := lenovo
